@@ -21,6 +21,6 @@ mongoose
 
 const employeeRouter = require("./routes/Employees");
 
-app.use("/Employees", employeeRouter);
+app.use("/employees", employeeRouter);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
