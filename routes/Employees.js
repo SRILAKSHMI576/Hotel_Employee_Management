@@ -52,4 +52,25 @@ router.route("/max-salary").get((req, res) => {
     });
 });
 
+//Showing average salary of Type 0
+router.route("/avg-salary").get((req, res) => {
+  const query = req.query;
+  Employee.find(query)
+    .then(employees => {
+      const length = employees.length;
+      if (length === 0) {
+        return res.send({ avg_salary: 0 });
+      }
+      let sum = 0;
+      employees.forEach(employee => {
+        sum += employee.salary;
+      });
+      const avg = sum / length;
+      return res.send({ avg_salary: avg });
+    })
+    .catch(err => {
+      return res.send(err);
+    });
+});
+
 module.exports = router;
