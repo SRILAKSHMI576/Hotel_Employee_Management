@@ -30,4 +30,26 @@ router.route("/").get((req, res) => {
     });
 });
 
+//Employees with highest salary
+router.route("/max-salary").get((req, res) => {
+  Employee.find()
+    .then(employees => {
+      const maxSalary = Math.max.apply(
+        Math,
+        employees.map(function(o) {
+          return o.salary;
+        })
+      );
+
+      const allMaxSalaryEmployees = employees.filter(
+        employee => employee.salary === maxSalary
+      );
+
+      return res.send(allMaxSalaryEmployees);
+    })
+    .catch(err => {
+      return res.json(err);
+    });
+});
+
 module.exports = router;
