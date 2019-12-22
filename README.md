@@ -9,6 +9,8 @@ cd <path-to-app>
 npm install
 npm start
 
+Note: make sure replace .env with you db configuration, here I am just providing a sample one
+
 API:
 -> To post an employee:
 EndPoint: /employees, Method: POST
